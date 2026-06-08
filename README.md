@@ -1,58 +1,64 @@
 # AgendaBarber
+## AgendaBarber
 
-Este é o meu projeto acadêmico para gerenciar agendamentos de barbearia.
+Sou o autor deste projeto acadêmico, desenvolvido para gerenciar agendamentos de uma barbearia de forma simples e didática.
 
-## Sobre este projeto
-Criei uma aplicação simples com backend em Node.js e SQLite e um frontend em HTML/CSS/JS usando Bootstrap. O objetivo é demonstrar conceitos básicos de rotas, persistência com SQLite e interface mínima para clientes e administradores.
+### Visão geral
+AgendaBarber é uma aplicação minimalista composta por um backend em Node.js que expõe rotas básicas para gerenciamento de agendamentos, profissionais, clientes e bloqueios, e um frontend em HTML/CSS/JS com Bootstrap para interação do usuário.
 
-## Tecnologias
-- Node.js
-- Express
+### Funcionalidades principais
+- Gerenciamento de agendamentos
+- Cadastro e autenticação de clientes e profissionais
+- Bloqueio de horários
+- Interface simples para administrador e cliente
+
+### Tecnologias
+- Node.js + Express
 - SQLite
-- HTML, Bootstrap, SASS, JavaScript puro
+- HTML, Bootstrap, SASS, JavaScript (sem frameworks)
 
-## Requisitos
-- Node.js (>= 14)
+### Requisitos
+- Node.js (versão 14 ou superior)
 - npm
 
-## Instalação
-1. Instale as dependências:
+### Instalação
+1. No diretório do projeto, instale as dependências:
 
 ```bash
 npm install
 ```
 
-2. O banco é SQLite; caso não exista, a aplicação inicializa conforme `backend/initDB.js`.
+2. O projeto usa SQLite. Se o arquivo `barbearia.db` não existir, a aplicação inicializa a base conforme `backend/initDB.js`.
 
-## Como executar
-- Iniciar o backend:
+### Execução
+- Para iniciar o servidor backend:
 
 ```bash
 node backend/server.js
 ```
 
-- Para testar o frontend localmente eu abro `frontend/index.html` no navegador ou executo o servidor estático:
+- Para testar o frontend localmente, abra `frontend/index.html` ou execute o servidor estático:
 
 ```bash
 node frontend/server.js
 ```
 
-## Estrutura do projeto
-- `backend/`: API e lógica do servidor
-- `frontend/`: páginas HTML, CSS e JavaScript
-- `barbearia.db`: arquivo SQLite (se presente)
+### Estrutura do repositório
+- `backend/`: código do servidor, controladores, rotas e inicialização do banco
+- `frontend/`: páginas HTML, CSS (SASS) e scripts do cliente
+- `barbearia.db`: arquivo SQLite (quando presente)
 
-## Desenvolvimento
-1. Crie uma branch para suas alterações: `git checkout -b minha-melhoria`
-2. Faça commits claros e pequenos
-3. Envie um Pull Request
+### Como contribuir
+1. Crie uma branch com a sua alteração: `git checkout -b minha-melhoria`
+2. Faça commits concisos e descritivos
+3. Abra um Pull Request descrevendo as mudanças
 
-## Repositório
-https://github.com/ramonlc07/agendabarber
+### Contato
+Se precisar, abra uma issue ou entre em contato pelo perfil do GitHub.
 
-## Observações
-Projeto feito para fins acadêmicos; não inclui licença específica.
+### Licença
+Projeto desenvolvido para fins acadêmicos; sem licença explícita.
 
 ---
-Arquivo atualizado para deixar o texto em primeira pessoa.
+Versão refinada do `README.md` com tom profissional em primeira pessoa.
 É um sistema de agendemantos voltado para procedimentos de barbearia.
