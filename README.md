@@ -48,17 +48,9 @@ node frontend/server.js
 - `frontend/`: páginas HTML, CSS (SASS) e scripts do cliente
 - `barbearia.db`: arquivo SQLite (quando presente)
 
-### Como contribuir
-1. Crie uma branch com a sua alteração: `git checkout -b minha-melhoria`
-2. Faça commits concisos e descritivos
-3. Abra um Pull Request descrevendo as mudanças
 
 ### Contato
 Se precisar, abra uma issue ou entre em contato pelo perfil do GitHub.
 
 ### Licença
 Projeto desenvolvido para fins acadêmicos; sem licença explícita.
-
----
-Versão refinada do `README.md` com tom profissional em primeira pessoa.
-É um sistema de agendemantos voltado para procedimentos de barbearia.
