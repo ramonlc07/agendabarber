@@ -1,7 +1,9 @@
 const sqlite3 = require('sqlite3').verbose();
 
+const caminhoBanco = process.env.DB_PATH || './barbearia.db';
+
 // Abre ou cria o banco automaticamente.
-const conexao = new sqlite3.Database('./barbearia.db', (erro) => {
+const conexao = new sqlite3.Database(caminhoBanco, (erro) => {
   if (erro) {
     console.error('Erro ao conectar no banco:', erro.message);
     return;

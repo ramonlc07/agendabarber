@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000';
+const API_URL = '';
 
 const formCadastro = document.getElementById('form-cadastro');
 const formLogin = document.getElementById('form-login');
