@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - Barbearia</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div
+      class="container d-flex flex-column flex-md-row justify-content-between
+      align-items-md-center gap-3 py-2"
+    >
+      <div>
+        <h1 class="display-6 mb-1">Área Administrativa</h1>
+        <p class="mb-0">Gerencie a rotina da barbearia em um só lugar.</p>
+      </div>
+      <button class="btn btn-light" id="btn-sair">Sair</button>
+    </div>
+  </header>
+
+  <main class="container py-4">
+    <section class="mb-4">
+      <h2 class="h4 mb-1">Painel de controle</h2>
+      <p class="mb-0">
+        Acompanhe clientes, serviços, profissionais, agenda e bloqueios.
+      </p>
+    </section>
+
+    <section class="row g-4">
+      <div class="col-12">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Clientes</h2>
+          <p class="small mb-3">Visualize os clientes cadastrados.</p>
+          <div id="admin-lista-clientes" class="table-responsive"></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Serviços</h2>
+          <p class="small mb-3">Consulte os serviços oferecidos.</p>
+          <div id="admin-lista-servicos" class="table-responsive"></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Criar serviço</h2>
+          <p class="small mb-3">Cadastre uma nova opção de atendimento.</p>
+          <form id="form-servico">
+            <input
+              class="form-control mb-2"
+              id="servico-nome"
+              placeholder="Nome"
+              required
+            >
+            <input
+              class="form-control mb-2"
+              id="servico-descricao"
+              placeholder="Descrição"
+            >
+            <input
+              class="form-control mb-2"
+              id="servico-preco"
+              type="number"
+              step="0.01"
+              placeholder="Preço"
+              required
+            >
+            <input
+              class="form-control mb-3"
+              id="servico-duracao"
+              type="number"
+              placeholder="Duração em minutos"
+              required
+            >
+            <button class="btn btn-primary w-100" type="submit">
+              Salvar serviço
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Profissionais</h2>
+          <p class="small mb-3">Veja a equipe e sua disponibilidade.</p>
+          <div id="admin-lista-profissionais" class="table-responsive"></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Criar profissional</h2>
+          <p class="small mb-3">Adicione um profissional à agenda.</p>
+          <form id="form-profissional">
+            <input
+              class="form-control mb-2"
+              id="profissional-nome"
+              placeholder="Nome"
+              required
+            >
+            <input
+              class="form-control mb-2"
+              id="profissional-especialidade"
+              placeholder="Especialidade"
+            >
+            <select class="form-select mb-3" id="profissional-disponivel">
+              <option value="1">Disponível</option>
+              <option value="0">Indisponível</option>
+            </select>
+            <button class="btn btn-primary w-100" type="submit">
+              Salvar profissional
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Agendamentos</h2>
+          <p class="small mb-3">Acompanhe os horários marcados pelos clientes.</p>
+          <div id="admin-lista-agendamentos" class="table-responsive"></div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-5">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Criar bloqueio</h2>
+          <p class="small mb-3">Bloqueie horários indisponíveis na agenda.</p>
+          <form id="form-bloqueio">
+            <select
+              class="form-select mb-2"
+              id="bloqueio-profissional"
+              required
+            ></select>
+            <input
+              class="form-control mb-2"
+              id="bloqueio-data-hora"
+              type="datetime-local"
+              required
+            >
+            <input
+              class="form-control mb-3"
+              id="bloqueio-motivo"
+              placeholder="Motivo"
+              required
+            >
+            <button class="btn btn-primary w-100" type="submit">
+              Salvar bloqueio
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-7">
+        <div class="card p-3">
+          <h2 class="h5 mb-1">Bloqueios</h2>
+          <p class="small mb-3">Consulte os horários bloqueados.</p>
+          <div id="admin-lista-bloqueios" class="table-responsive"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  ></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Regras do projeto
+- Projeto acadêmico, simples e didático.
+- Código fácil de entender e explicar.
+- Não criar arquitetura avançada.
+- Não usar TypeScript.
+- Não usar ORM.
+- Não usar frameworks frontend.
+- Usar HTML, Bootstrap, SASS, CSS compilado, JavaScript puro, Node.js, Express e SQLite.
+- Sempre usar nomes simples e, quando possível, em português.
+- Sempre comentar o código de forma curta e útil.
+- Evitar arquivos grandes.
+- Tentar manter cada arquivo entre 60 e 100 linhas, quando possível.
+- Criar apenas o que for pedido em cada etapa.
+- Não antecipar funcionalidades futuras.
+- Priorizar simplicidade, clareza e aderência ao documento da disciplina.
+- O frontend deve usar Bootstrap por CDN e customizações em style.scss.
+- O CSS final deve existir em style.css.
+- Sempre explicar no final, em poucas linhas, o que foi criado.
