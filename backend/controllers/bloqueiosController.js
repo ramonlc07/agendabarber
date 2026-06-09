@@ -100,8 +100,22 @@ function remover(req, res) {
   });
 }
 
+function limpar(req, res) {
+  // Remove todos os bloqueios cadastrados.
+  conexao.run('DELETE FROM bloqueios_agenda', [], function (erro) {
+    if (erro) {
+      return res.status(500).json({ mensagem: 'Erro ao limpar bloqueios.' });
+    }
+
+    return res.json({
+      mensagem: `${this.changes} bloqueio(s) removido(s).`
+    });
+  });
+}
+
 module.exports = {
   listar,
   criar,
-  remover
+  remover,
+  limpar
 };

@@ -183,9 +183,44 @@ async function cancelar(req, res) {
   }
 }
 
+async function limparMeus(req, res) {
+  try {
+    const resultado = await executar(
+      `DELETE FROM agendamentos
+       WHERE status = ? AND cliente_id = (
+         SELECT id FROM clientes WHERE usuario_id = ?
+       )`,
+      ['Cancelado', req.usuario.id]
+    );
+
+    return res.json({
+      mensagem: `${resultado.alterados} agendamento(s) removido(s).`
+    });
+  } catch (erro) {
+    return res.status(500).json({ mensagem: 'Erro ao limpar agendamentos.' });
+  }
+}
+
+async function limpar(req, res) {
+  try {
+    const resultado = await executar(
+      'DELETE FROM agendamentos WHERE status = ?',
+      ['Cancelado']
+    );
+
+    return res.json({
+      mensagem: `${resultado.alterados} agendamento(s) removido(s).`
+    });
+  } catch (erro) {
+    return res.status(500).json({ mensagem: 'Erro ao limpar agendamentos.' });
+  }
+}
+
 module.exports = {
   criar,
   listar,
   listarMeus,
-  cancelar
+  cancelar,
+  limparMeus,
+  limpar
 };

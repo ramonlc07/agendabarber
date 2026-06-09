@@ -7,6 +7,9 @@ const formServico = document.getElementById('form-servico');
 const formProfissional = document.getElementById('form-profissional');
 const formBloqueio = document.getElementById('form-bloqueio');
 const btnSair = document.getElementById('btn-sair');
+const btnLimparMeus = document.getElementById('btn-limpar-meus');
+const btnLimparAgendamentos = document.getElementById('btn-limpar-agendamentos');
+const btnLimparBloqueios = document.getElementById('btn-limpar-bloqueios');
 
 async function enviarDados(url, dados) {
   return buscarDados(url, {
@@ -238,6 +241,22 @@ async function cancelarAgendamento(id) {
   }
 }
 
+async function limparMeusAgendamentos() {
+  if (!confirm('Remover agendamentos cancelados da sua lista?')) return;
+
+  try {
+    const resultado = await buscarDados(`${API_URL}/agendamentos/meus/limpar`, {
+      method: 'DELETE',
+      headers: headersComToken()
+    });
+
+    mostrarNotificacao(resultado.mensagem);
+    carregarMeusAgendamentos();
+  } catch (erro) {
+    mostrarNotificacao(erro.message, 'erro');
+  }
+}
+
 function configurarDashboardCliente() {
   if (!verificarCliente()) return;
   carregarServicos();
@@ -251,6 +270,8 @@ function configurarDashboardCliente() {
       cancelarAgendamento(evento.target.dataset.id);
     }
   });
+
+  btnLimparMeus.addEventListener('click', limparMeusAgendamentos);
 }
 
 if (formAgendamento) {
@@ -333,6 +354,22 @@ async function cancelarAgendamentoAdmin(id) {
   }
 }
 
+async function limparAgendamentosAdmin() {
+  if (!confirm('Remover agendamentos cancelados da lista?')) return;
+
+  try {
+    const resultado = await buscarDados(`${API_URL}/agendamentos/limpar`, {
+      method: 'DELETE',
+      headers: headersComToken()
+    });
+
+    mostrarNotificacao(resultado.mensagem);
+    carregarAgendamentosAdmin();
+  } catch (erro) {
+    mostrarNotificacao(erro.message, 'erro');
+  }
+}
+
 async function carregarBloqueiosAdmin() {
   const bloqueios = await buscarDados(`${API_URL}/bloqueios`, {
     headers: headersComToken()
@@ -347,6 +384,22 @@ async function carregarBloqueiosAdmin() {
       bloqueio.motivo
     ])
   );
+}
+
+async function limparBloqueiosAdmin() {
+  if (!confirm('Remover todos os bloqueios da lista?')) return;
+
+  try {
+    const resultado = await buscarDados(`${API_URL}/bloqueios`, {
+      method: 'DELETE',
+      headers: headersComToken()
+    });
+
+    mostrarNotificacao(resultado.mensagem);
+    carregarBloqueiosAdmin();
+  } catch (erro) {
+    mostrarNotificacao(erro.message, 'erro');
+  }
 }
 
 async function criarServico(evento) {
@@ -439,6 +492,9 @@ function configurarDashboardAdmin() {
       cancelarAgendamentoAdmin(evento.target.dataset.id);
     }
   });
+
+  btnLimparAgendamentos.addEventListener('click', limparAgendamentosAdmin);
+  btnLimparBloqueios.addEventListener('click', limparBloqueiosAdmin);
 }
 
 if (formServico) {

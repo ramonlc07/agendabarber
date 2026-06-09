@@ -9,6 +9,8 @@ const adminMiddleware = require('../middlewares/adminMiddleware');
 router.post('/', authMiddleware, agendamentosController.criar);
 router.get('/', authMiddleware, adminMiddleware, agendamentosController.listar);
 router.get('/meus', authMiddleware, agendamentosController.listarMeus);
+router.delete('/meus/limpar', authMiddleware, agendamentosController.limparMeus);
+router.delete('/limpar', authMiddleware, adminMiddleware, agendamentosController.limpar);
 router.patch('/:id/cancelar', authMiddleware, agendamentosController.cancelar);
 
 module.exports = router;
