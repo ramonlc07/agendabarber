@@ -124,6 +124,14 @@ function botaoCancelar(classe, id) {
   `;
 }
 
+function botaoRemover(classe, id) {
+  return `
+    <button class="btn btn-sm btn-outline-danger ${classe}" data-id="${id}">
+      Excluir
+    </button>
+  `;
+}
+
 if (formCadastro) {
   formCadastro.addEventListener('submit', async (evento) => {
     evento.preventDefault();
@@ -306,11 +314,12 @@ async function carregarProfissionaisAdmin() {
   const select = document.getElementById('bloqueio-profissional');
 
   area.innerHTML = montarTabela(
-    ['Nome', 'Especialidade', 'Status'],
+    ['Nome', 'Especialidade', 'Status', 'Ação'],
     profissionais.map((profissional) => [
       profissional.nome,
       profissional.especialidade || '-',
-      profissional.disponivel ? 'Disponível' : 'Indisponível'
+      profissional.disponivel ? 'Disponível' : 'Indisponível',
+      botaoRemover('btn-remover-profissional', profissional.id)
     ])
   );
 
@@ -397,6 +406,22 @@ async function limparBloqueiosAdmin() {
 
     mostrarNotificacao(resultado.mensagem);
     carregarBloqueiosAdmin();
+  } catch (erro) {
+    mostrarNotificacao(erro.message, 'erro');
+  }
+}
+
+async function removerProfissional(id) {
+  if (!confirm('Excluir este profissional?')) return;
+
+  try {
+    const resultado = await buscarDados(`${API_URL}/profissionais/${id}`, {
+      method: 'DELETE',
+      headers: headersComToken()
+    });
+
+    mostrarNotificacao(resultado.mensagem);
+    carregarProfissionaisAdmin();
   } catch (erro) {
     mostrarNotificacao(erro.message, 'erro');
   }
@@ -490,6 +515,12 @@ function configurarDashboardAdmin() {
   document.getElementById('admin-lista-agendamentos').addEventListener('click', (evento) => {
     if (evento.target.classList.contains('btn-cancelar-admin')) {
       cancelarAgendamentoAdmin(evento.target.dataset.id);
+    }
+  });
+
+  document.getElementById('admin-lista-profissionais').addEventListener('click', (evento) => {
+    if (evento.target.classList.contains('btn-remover-profissional')) {
+      removerProfissional(evento.target.dataset.id);
     }
   });
 
